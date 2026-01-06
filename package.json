@@ -35,6 +35,22 @@
       {
         "command": "pydantic-helper.insertModel",
         "title": "Pydantic: Insert BaseModel"
+      },
+      {
+        "command": "pydantic-helper.insertModel",
+        "title": "Pydantic: Insert BaseModel"
+      },
+      {
+        "command": "pydantic-helper.insertFastAPIApp",
+        "title": "FastAPI: Insert App"
+      },
+      {
+        "command": "pydantic-helper.insertFastAPIModels",
+        "title": "FastAPI: Insert Request & Response Models"
+      },
+      {
+        "command": "pydantic-helper.insertFastAPICRUD",
+        "title": "FastAPI: Insert CRUD Endpoint"
       }
     ]
   },

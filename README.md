@@ -7,6 +7,8 @@
 ☕ **Support the project:**  
 [![Buy Me a Coffee](assets/buy-me-a-coffee.png)](https://www.buymeacoffee.com/darshfun)
 
+### I build web tools, fun games, and helpful utilities — constantly experimenting and learning new technologies. I'm excited to bring that same energy to developer tools like this extension!
+
 Write clean, correct, and production-ready Pydantic models faster — without memorizing syntax.
 
 ---

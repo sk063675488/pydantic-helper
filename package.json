@@ -1,0 +1,36 @@
+{
+  "name": "pydantic-helper",
+  "license": "MIT",
+  "displayName": "Pydantic Helper & Snippets",
+  "description": "Modern Pydantic v2 snippets and helpers for Python developers",
+  "version": "1.0.0",
+  "publisher": "yourpublishername",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Programming Languages"],
+  "activationEvents": ["onLanguage:python"],
+
+  "main": "./out/extension.js",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/pydantic.code-snippets.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "pydantic-helper.insertModel",
+        "title": "Pydantic: Insert BaseModel"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3"
+  }
+}

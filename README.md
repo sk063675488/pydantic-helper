@@ -2,6 +2,9 @@
 
 Modern **Pydantic v2** snippets and helpers for Python developers.
 
+☕ **Support the project:**  
+[![Buy Me a Coffee](assets/buy-me-a-coffee.png)](https://www.buymeacoffee.com/darshfun)
+
 Write clean, correct, and production-ready Pydantic models faster — without memorizing syntax.
 
 ---
@@ -53,6 +56,7 @@ Or open Command Palette:
 - Pydantic v2+
 
 ---
+🌐 **Website:** https://darsh.fun
 
 ## 🛠 License
 MIT

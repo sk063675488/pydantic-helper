@@ -1,50 +1,338 @@
 {
-  "Pydantic BaseModel": {
-    "prefix": "pydantic-model",
+  "Pydantic BaseModel (Full)": {
+    "prefix": "pydantic-model-full",
     "body": [
-      "from pydantic import BaseModel, Field",
+      "from pydantic import BaseModel, Field, ConfigDict",
       "",
       "class ${1:ModelName}(BaseModel):",
-      "    ${2:field_name}: ${3:type} = Field(..., description=\"${4:description}\")"
+      "    model_config = ConfigDict(",
+      "        from_attributes=True,",
+      "        populate_by_name=True,",
+      "        extra='forbid'",
+      "    )",
+      "",
+      "    ${2:id}: int = Field(..., description=\"${3:ID description}\")",
+      "    ${4:name}: str"
     ],
-    "description": "Create a Pydantic v2 BaseModel"
+    "description": "Full Pydantic v2 BaseModel template"
   },
 
-  "Pydantic Field Validator": {
-    "prefix": "pydantic-validator",
+  "Pydantic Optional Field": {
+    "prefix": "pydantic-optional",
+    "body": [
+      "from typing import Optional",
+      "",
+      "${1:field_name}: Optional[${2:str}] = None"
+    ],
+    "description": "Optional field in Pydantic v2"
+  },
+
+  "Pydantic Default Factory": {
+    "prefix": "pydantic-default-factory",
+    "body": [
+      "from pydantic import Field",
+      "from datetime import datetime",
+      "",
+      "${1:created_at}: datetime = Field(default_factory=datetime.utcnow)"
+    ],
+    "description": "Field with default_factory"
+  },
+
+  "Pydantic Constrained String": {
+    "prefix": "pydantic-constr",
+    "body": [
+      "from pydantic import StringConstraints",
+      "from typing_extensions import Annotated",
+      "",
+      "${1:username}: Annotated[str, StringConstraints(",
+      "    min_length=${2:3},",
+      "    max_length=${3:50},",
+      "    strip_whitespace=True",
+      ")]"
+    ],
+    "description": "Constrained string using Pydantic v2"
+  },
+
+  "Pydantic Constrained Integer": {
+    "prefix": "pydantic-conint",
+    "body": [
+      "from pydantic import Field",
+      "",
+      "${1:age}: int = Field(..., ge=${2:0}, le=${3:120})"
+    ],
+    "description": "Constrained integer field"
+  },
+
+  "Pydantic EmailStr": {
+    "prefix": "pydantic-email",
+    "body": [
+      "from pydantic import EmailStr",
+      "",
+      "${1:email}: EmailStr"
+    ],
+    "description": "EmailStr field"
+  },
+
+  "Pydantic URL Field": {
+    "prefix": "pydantic-url",
+    "body": [
+      "from pydantic import AnyUrl",
+      "",
+      "${1:website}: AnyUrl"
+    ],
+    "description": "URL field using AnyUrl"
+  },
+
+  "Pydantic Field Alias": {
+    "prefix": "pydantic-alias",
+    "body": [
+      "from pydantic import Field",
+      "",
+      "${1:internal_name}: ${2:str} = Field(..., alias='${3:externalName}')"
+    ],
+    "description": "Field alias mapping"
+  },
+
+  "Pydantic Computed Field": {
+    "prefix": "pydantic-computed",
+    "body": [
+      "from pydantic import computed_field",
+      "",
+      "@computed_field",
+      "def ${1:full_name}(self) -> str:",
+      "    return f\"{self.${2:first_name}} {self.${3:last_name}}\""
+    ],
+    "description": "Computed field (Pydantic v2)"
+  },
+
+  "Pydantic Field Validator (Before)": {
+    "prefix": "pydantic-validator-before",
     "body": [
       "from pydantic import field_validator",
       "",
-      "@field_validator('${1:field_name}')",
+      "@field_validator('${1:field_name}', mode='before')",
       "@classmethod",
       "def validate_${1:field_name}(cls, v):",
       "    return v"
     ],
-    "description": "Pydantic v2 field validator"
+    "description": "Field validator (before mode)"
   },
 
-  "Pydantic Model Validator": {
-    "prefix": "pydantic-model-validator",
+  "Pydantic Field Validator (After)": {
+    "prefix": "pydantic-validator-after",
+    "body": [
+      "from pydantic import field_validator",
+      "",
+      "@field_validator('${1:field_name}', mode='after')",
+      "@classmethod",
+      "def validate_${1:field_name}(cls, v):",
+      "    return v"
+    ],
+    "description": "Field validator (after mode)"
+  },
+
+  "Pydantic Model Validator (Before)": {
+    "prefix": "pydantic-model-validator-before",
     "body": [
       "from pydantic import model_validator",
       "",
-      "@model_validator(mode='after')",
-      "def validate_model(self):",
-      "    return self"
+      "@model_validator(mode='before')",
+      "def validate_model(cls, values):",
+      "    return values"
     ],
-    "description": "Pydantic v2 model validator"
+    "description": "Model validator (before)"
   },
 
-  "Pydantic ConfigDict": {
-    "prefix": "pydantic-config",
+  "Pydantic ORM Mode": {
+    "prefix": "pydantic-orm",
     "body": [
       "from pydantic import ConfigDict",
       "",
-      "model_config = ConfigDict(",
-      "    from_attributes=True,",
-      "    populate_by_name=True",
+      "model_config = ConfigDict(from_attributes=True)"
+    ],
+    "description": "ORM mode in Pydantic v2"
+  },
+
+  "Pydantic JSON Schema": {
+    "prefix": "pydantic-schema",
+    "body": [
+      "schema = ${1:ModelName}.model_json_schema()"
+    ],
+    "description": "Generate JSON Schema"
+  },
+
+  "Pydantic Model Dump": {
+    "prefix": "pydantic-dump",
+    "body": [
+      "${1:instance}.model_dump()"
+    ],
+    "description": "Dump model to dict"
+  },
+
+  "Pydantic Model Dump JSON": {
+    "prefix": "pydantic-dump-json",
+    "body": [
+      "${1:instance}.model_dump_json()"
+    ],
+    "description": "Dump model to JSON"
+  },
+
+  "Pydantic Parse Obj": {
+    "prefix": "pydantic-validate",
+    "body": [
+      "${1:ModelName}.model_validate(${2:data})"
+    ],
+    "description": "Validate data into model"
+  },
+  "FastAPI App": {
+    "prefix": "fastapi-app",
+    "body": [
+      "from fastapi import FastAPI",
+      "",
+      "app = FastAPI(",
+      "    title='${1:App Name}',",
+      "    version='${2:1.0.0}'",
       ")"
     ],
-    "description": "Pydantic v2 ConfigDict"
+    "description": "Create FastAPI app instance"
+  },
+
+  "FastAPI Request Model": {
+    "prefix": "fastapi-request-model",
+    "body": [
+      "from pydantic import BaseModel, Field",
+      "",
+      "class ${1:RequestModel}(BaseModel):",
+      "    ${2:field}: ${3:str} = Field(..., description='${4:description}')"
+    ],
+    "description": "FastAPI request body model (Pydantic v2)"
+  },
+
+  "FastAPI Response Model": {
+    "prefix": "fastapi-response-model",
+    "body": [
+      "from pydantic import BaseModel",
+      "",
+      "class ${1:ResponseModel}(BaseModel):",
+      "    ${2:message}: ${3:str}",
+      "    ${4:data}: ${5:dict | None} = None"
+    ],
+    "description": "FastAPI response model"
+  },
+
+  "FastAPI GET Endpoint": {
+    "prefix": "fastapi-get",
+    "body": [
+      "from fastapi import APIRouter",
+      "",
+      "router = APIRouter()",
+      "",
+      "@router.get('/${1:path}', response_model=${2:ResponseModel})",
+      "def ${3:get_items}():",
+      "    return ${2:ResponseModel}(${4:message='Success'})"
+    ],
+    "description": "FastAPI GET endpoint with response model"
+  },
+
+  "FastAPI POST Endpoint": {
+    "prefix": "fastapi-post",
+    "body": [
+      "from fastapi import APIRouter",
+      "",
+      "router = APIRouter()",
+      "",
+      "@router.post('/${1:path}', response_model=${2:ResponseModel})",
+      "def ${3:create_item}(payload: ${4:RequestModel}):",
+      "    return ${2:ResponseModel}(${5:message='Created'}, data=payload.model_dump())"
+    ],
+    "description": "FastAPI POST endpoint with request & response models"
+  },
+
+  "FastAPI PUT Endpoint": {
+    "prefix": "fastapi-put",
+    "body": [
+      "@router.put('/${1:path}/{${2:item_id}}', response_model=${3:ResponseModel})",
+      "def ${4:update_item}(${2:item_id}: int, payload: ${5:RequestModel}):",
+      "    return ${3:ResponseModel}(message='Updated', data=payload.model_dump())"
+    ],
+    "description": "FastAPI PUT endpoint"
+  },
+
+  "FastAPI DELETE Endpoint": {
+    "prefix": "fastapi-delete",
+    "body": [
+      "@router.delete('/${1:path}/{${2:item_id}}')",
+      "def ${3:delete_item}(${2:item_id}: int):",
+      "    return {'message': 'Deleted successfully'}"
+    ],
+    "description": "FastAPI DELETE endpoint"
+  },
+
+  "FastAPI Query Parameters": {
+    "prefix": "fastapi-query",
+    "body": [
+      "from fastapi import Query",
+      "",
+      "def ${1:list_items}(",
+      "    page: int = Query(1, ge=1),",
+      "    size: int = Query(10, le=100)",
+      "):",
+      "    return {'page': page, 'size': size}"
+    ],
+    "description": "FastAPI query parameters"
+  },
+
+  "FastAPI Path Parameters": {
+    "prefix": "fastapi-path",
+    "body": [
+      "from fastapi import Path",
+      "",
+      "def ${1:get_item}(",
+      "    ${2:item_id}: int = Path(..., ge=1)",
+      "):",
+      "    return {'item_id': ${2:item_id}}"
+    ],
+    "description": "FastAPI path parameters"
+  },
+
+  "FastAPI Depends": {
+    "prefix": "fastapi-depends",
+    "body": [
+      "from fastapi import Depends",
+      "",
+      "def ${1:get_current_user}():",
+      "    pass",
+      "",
+      "def ${2:secure_endpoint}(",
+      "    user = Depends(${1:get_current_user})",
+      "):",
+      "    return user"
+    ],
+    "description": "FastAPI dependency injection"
+  },
+
+  "FastAPI HTTPException": {
+    "prefix": "fastapi-exception",
+    "body": [
+      "from fastapi import HTTPException, status",
+      "",
+      "raise HTTPException(",
+      "    status_code=status.HTTP_400_BAD_REQUEST,",
+      "    detail='${1:Error message}'",
+      ")"
+    ],
+    "description": "FastAPI HTTPException"
+  },
+
+  "FastAPI Router Include": {
+    "prefix": "fastapi-include-router",
+    "body": [
+      "from fastapi import FastAPI",
+      "from ${1:app}.routes import ${2:router}",
+      "",
+      "app = FastAPI()",
+      "app.include_router(${2:router}, prefix='/${3:api}', tags=['${4:tag}'])"
+    ],
+    "description": "Include FastAPI router"
   }
 }

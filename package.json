@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/pydantic-helper.git"
+    "url": "https://github.com/sk063675488/pydantic-helper.git"
   },
   "engines": {
     "vscode": "^1.85.0"
@@ -44,5 +44,10 @@
   "devDependencies": {
     "@types/vscode": "^1.85.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "js-yaml": "^4.1.1",
+    "path": "^0.12.7"
   }
 }

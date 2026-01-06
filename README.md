@@ -2,10 +2,10 @@
 
 ### Modern **Pydantic v2** snippets and helpers for Python developers.
 
-![Pydantic Helper & Snippets](assets/banner.png)
+![Pydantic Helper & Snippets](https://darsh.fun/images/icons/banner.png)
 
 ☕ **Support the project:**  
-[![Buy Me a Coffee](assets/buy-me-a-coffee.png)](https://www.buymeacoffee.com/darshfun)
+[![Buy Me a Coffee](https://darsh.fun/images/icons/buy-me-a-coffee.png)](https://www.buymeacoffee.com/darshfun)
 
 ### I build web tools, fun games, and helpful utilities — constantly experimenting and learning new technologies. I'm excited to bring that same energy to developer tools like this extension!
 

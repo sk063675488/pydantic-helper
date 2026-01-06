@@ -1,10 +1,14 @@
 {
   "name": "pydantic-helper",
-  "license": "MIT",
   "displayName": "Pydantic Helper & Snippets",
   "description": "Modern Pydantic v2 snippets and helpers for Python developers",
   "version": "1.0.0",
-  "publisher": "yourpublishername",
+  "publisher": "Sandeep Kumar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/pydantic-helper.git"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },

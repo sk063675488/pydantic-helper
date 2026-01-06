@@ -1,0 +1,32 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Compiled output
+out/
+dist/
+
+# VS Code
+.vscode/
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+
+# VSCE package
+*.vsix
+
+# Test & coverage
+coverage/
+
+# Misc
+*.log

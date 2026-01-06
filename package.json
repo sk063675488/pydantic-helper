@@ -2,7 +2,7 @@
   "name": "pydantic-helper",
   "displayName": "Pydantic Helper & Snippets",
   "description": "Modern Pydantic v2 snippets and helpers for Python developers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "darsh-technology06",
   "license": "MIT",
   "icon": "icon.png",

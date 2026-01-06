@@ -1,6 +1,7 @@
 # Pydantic Helper & Snippets 🚀
 
-Modern **Pydantic v2** snippets and helpers for Python developers.
+##Modern **Pydantic v2** snippets and helpers for Python developers.
+
 ![Pydantic Helper & Snippets](assets/banner.png)
 
 ☕ **Support the project:**  
